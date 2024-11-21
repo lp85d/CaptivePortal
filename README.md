@@ -12,7 +12,7 @@ nano /etc/nftables.conf
 nft -c -f /etc/nftables.conf  
 nft -f /etc/nftables.conf  
 nft list ruleset  
-`table inet filter {
+``table inet filter {
         chain input {
                 type filter hook input priority filter; policy accept;
         }
@@ -36,5 +36,4 @@ table ip nat {
                 type nat hook postrouting priority srcnat; policy accept;
                 masquerade
         }
-}
-`
+}``
