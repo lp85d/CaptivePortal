@@ -12,28 +12,19 @@ nano /etc/nftables.conf
 nft -c -f /etc/nftables.conf  
 nft -f /etc/nftables.conf  
 nft list ruleset  
-`table inet filter {
-        chain input {
+`table inet filter 
+        chain input 
                 type filter hook input priority filter; policy accept;
-        }
-
-        chain forward {
+        chain forward 
                 type filter hook forward priority filter; policy drop;
                 iif "wlp2s0" accept
-        }
-
-        chain output {
+        chain output 
                 type filter hook output priority filter; policy accept;
-        }
-}
-table ip nat {
-        chain prerouting {
+table ip nat 
+        chain prerouting 
                 type nat hook prerouting priority filter; policy accept;
                 iif "wlp2s0" tcp dport 80 dnat to 192.168.1.1:80
-        }
-
-        chain postrouting {
+        chain postrouting 
                 type nat hook postrouting priority srcnat; policy accept;
                 masquerade
-        }
-}`
+`
