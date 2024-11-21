@@ -28,3 +28,5 @@ table ip nat
                 type nat hook postrouting priority srcnat; policy accept;
                 masquerade
 `
+systemctl enable nftables        
+systemctl start nftables        
