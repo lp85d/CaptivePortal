@@ -1,4 +1,4 @@
-## CaptivePortal
+## CaptivePortal `Code Ctrl+E (Windows/Linux)`
 # Перенаправление Captive Portal
 dpkg -l | grep -E "hostapd|dnsmasq|nginx|php|mariadb|python3|pip"
 
