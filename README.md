@@ -30,3 +30,9 @@ table ip nat
 `
 systemctl enable nftables        
 systemctl start nftables        
+
+nano /etc/dnsmasq.conf        
+dnsmasq --test        
+dnsmasq: syntax check OK.        
+systemctl restart dnsmasq        
+systemctl status dnsmasq        
