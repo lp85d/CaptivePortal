@@ -70,3 +70,4 @@ nginx -v
 php -v        
 cat /etc/os-release        
 uname -r        
+sudo iw dev        
