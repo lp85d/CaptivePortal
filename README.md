@@ -36,3 +36,15 @@ dnsmasq --test
 dnsmasq: syntax check OK.        
 systemctl restart dnsmasq        
 systemctl status dnsmasq        
+
+sudo mkdir -p /etc/systemd/system/dnsmasq.service.d/        
+sudo nano /etc/systemd/system/dnsmasq.service.d/override.conf        
+[Unit]        
+After=network-online.target        
+Wants=network-online.target        
+
+sudo systemctl daemon-reload        
+sudo systemctl restart dnsmasq        
+sudo systemctl status dnsmasq        
+journalctl -u dnsmasq -n 20        
+dig google.com @127.0.0.1        
