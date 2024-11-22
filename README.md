@@ -1,6 +1,7 @@
 ## CaptivePortal `Code Ctrl+E (Windows/Linux)`
 # Перенаправление Captive Portal
 dpkg -l | grep -E "hostapd|dnsmasq|nginx|php|mariadb|python3|pip"
+grep "Install:" /var/log/apt/history.log | tail -n 10        
 
 apt list --installed | grep nftables   
 libnftables1/stable,now 1.0.6-2+deb12u2 amd64 [installed]   
