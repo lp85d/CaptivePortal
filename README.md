@@ -48,3 +48,24 @@ sudo systemctl restart dnsmasq
 sudo systemctl status dnsmasq        
 journalctl -u dnsmasq -n 20        
 dig google.com @127.0.0.1        
+
+dmesg | grep wlp2s0        
+sudo nano /etc/hostapd/hostapd.conf        
+sudo truncate -s 0 /var/log/syslog        
+sudo truncate -s 0 /var/log/hostapd.log        
+sudo truncate -s 0 /var/log/messages        
+sudo truncate -s 0 /var/log/kern.log        
+sudo systemctl restart hostapd        
+sudo systemctl status hostapd        
+sudo tail -f /var/log/syslog        
+sudo systemctl is-enabled hostapd        
+sudo systemctl is-enabled dnsmasq        
+sudo ifconfig wlp2s0 up        
+sudo tail -f /var/log/syslog        
+sudo systemctl status nginx        
+ls -l /var/www/captive_portal/        
+sudo nano /etc/nginx/sites-available/default        
+nginx -v        
+php -v        
+cat /etc/os-release        
+uname -r        
