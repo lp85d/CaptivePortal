@@ -73,7 +73,7 @@ uname -r
 sudo iw dev        
 
 GNU nano 7.2 /etc/nftables.conf         
-```json
+```python
 #!/usr/sbin/nft -f
 
 flush ruleset
