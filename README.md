@@ -73,6 +73,6 @@ uname -r
 sudo iw dev        
 
 GNU nano 7.2 /etc/nftables.conf         
-```JSON:(https://github.com/lp85d/CaptivePortal/blob/main/nftables.conf)
+```python:main/nftables.conf
 
 ```
