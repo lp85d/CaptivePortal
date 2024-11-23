@@ -12,23 +12,7 @@ nft list ruleset
 nano /etc/nftables.conf  
 nft -c -f /etc/nftables.conf  
 nft -f /etc/nftables.conf  
-nft list ruleset  
-`table inet filter 
-        chain input 
-                type filter hook input priority filter; policy accept;
-        chain forward 
-                type filter hook forward priority filter; policy drop;
-                iif "wlp2s0" accept
-        chain output 
-                type filter hook output priority filter; policy accept;
-table ip nat 
-        chain prerouting 
-                type nat hook prerouting priority filter; policy accept;
-                iif "wlp2s0" tcp dport 80 dnat to 192.168.1.1:80
-        chain postrouting 
-                type nat hook postrouting priority srcnat; policy accept;
-                masquerade
-`
+
 systemctl enable nftables        
 systemctl start nftables        
 
@@ -70,8 +54,9 @@ nginx -v
 php -v        
 cat /etc/os-release        
 uname -r        
-sudo iw dev        
+sudo iw dev
 
+nft list ruleset        
 GNU nano 7.2 /etc/nftables.conf         
 ```python
 #!/usr/sbin/nft -f
