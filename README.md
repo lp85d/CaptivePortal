@@ -71,3 +71,44 @@ php -v
 cat /etc/os-release        
 uname -r        
 sudo iw dev        
+
+
+`GNU nano 7.2                                               /etc/nftables.conf                                                         #!/usr/sbin/nft -f
+
+flush ruleset
+
+table inet filter {
+    set authorized_macs {
+        type ether_addr
+        elements = { 1c:cc:00:4d:91:03, d6:08:00:5c:54:78, dc:a9:71:00:d0:b7, e8:11:00:8e:60:d0 }
+    }
+
+    chain input {
+        type filter hook input priority filter; policy accept;
+        udp dport 53 accept
+        udp dport { 67, 68 } accept
+    }
+
+    chain forward {
+        type filter hook forward priority filter; policy drop;
+        ether saddr @authorized_macs accept
+        iifname "wlp2s0" accept
+        oifname "wlp2s0" accept
+    }
+
+    chain output {
+        type filter hook output priority filter; policy accept;
+    }
+}
+
+table ip nat {
+    chain prerouting {
+        type nat hook prerouting priority filter; policy accept;
+        ip daddr 192.168.1.1 tcp dport 80 redirect to :80
+    }
+
+    chain postrouting {
+        type nat hook postrouting priority srcnat; policy accept;
+        oifname "enp3s0" masquerade
+    }
+}`
